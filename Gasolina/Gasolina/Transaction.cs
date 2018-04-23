@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Gasolina.Models.Requests
+namespace Gasolina
 {
     [Serializable]
-    public class BaseRequest
+    public class Transaction
     {
         [XmlIgnore]
         public string ErrorCode { get; set; }
@@ -38,7 +38,7 @@ namespace Gasolina.Models.Requests
         [XmlIgnore]
         public Dictionary<string, string> ResponseItems { get; set; }
 
-        public BaseRequest()
+        public Transaction()
         {
             ProviderItems = new Dictionary<string, string>();
             ResponseItems = new Dictionary<string, string>();

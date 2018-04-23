@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gasolina.Models.Responses
 {
-    public class BaseResponse
+    class IPaymentResponseJSON
     {
+        public int id { get; set; }
     }
 }

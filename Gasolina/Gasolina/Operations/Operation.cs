@@ -45,7 +45,7 @@ namespace Gasolina.Operations
         protected List<decimal> AllowedAmmount { get; }
         protected Guid LogGuid { get; private set; }
 
-        protected BaseRequest BaseRequest = new BaseRequest();
+        protected Transaction Transaction = new Transaction();
         protected IOperationProvider OperationProvider { get; }
 
         public Operation(Guid logGuid, IOperationProvider operationProvider)
@@ -62,17 +62,18 @@ namespace Gasolina.Operations
             //init base Items
             ServiceResponse response = new ServiceResponse
             {
-                GUID = BaseRequest.Guid,
-                TransactionStatus = BaseRequest.TransactionStatus,
-                StatusDetail = BaseRequest.StatusDetail,
-                DatePost = BaseRequest.OrderDate,
-                TransactionId = BaseRequest.TransactionId,
-                ErrorCode = BaseRequest.ErrorCode
+                GUID = Transaction.Guid,
+                TransactionStatus = Transaction.TransactionStatus,
+                StatusDetail = Transaction.StatusDetail,
+                DatePost = Transaction.OrderDate,
+                TransactionId = req.TransactionId,
+                ErrorCode = Transaction.ErrorCode,
+                ServiceId = req.ServiceId
             };
-            response.Items.AddElementsToDictionary(BaseRequest.ResponseItems);
+            response.Items.AddElementsToDictionary(Transaction.ResponseItems);
 
-            if (!String.IsNullOrWhiteSpace(BaseRequest.ErrorCode))
-                response.ErrorCode = BaseRequest.ErrorCode;
+            if (!String.IsNullOrWhiteSpace(Transaction.ErrorCode)) response.ErrorCode = Transaction.ErrorCode;
+
             Logger.FileAddMessage(LogGuid, "[==================== RESPONSE MODEL MAPPEDD IN OPERATION.cs ==================]\r\n",
                 Utilities.ClassToString(response));
             return response;
