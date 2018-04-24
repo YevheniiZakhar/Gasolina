@@ -19,7 +19,7 @@ namespace Gasolina.Providers
         /// <param name="url">Provider url endpoint</param>
         /// <param name="parameters">parameters to send</param>
         /// <returns></returns>
-        public WebRequest CreateWebRequest(string parameters, string url)
+        public WebRequest CreateWebRequest(string url, string parameters)
         {
             //string url = ConfigurationManager.AppSettings.Get("ProviderUrl");
 

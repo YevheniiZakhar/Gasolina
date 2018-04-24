@@ -9,7 +9,7 @@ namespace Gasolina.Interfaces
 {
     public interface IOperationProvider
     {
-        string Check(Transaction transaction, Guid logGuid);
+        string CheckSettlements(Transaction transaction, Guid logGuid);
         string Payment(Transaction transaction, Guid logGuid);
         string Commit(Transaction transaction, Guid logGuid);
         string Cancel(Transaction transaction, Guid logGuid);
